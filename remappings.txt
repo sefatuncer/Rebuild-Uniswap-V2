@@ -1,0 +1,4 @@
+@prb/test/=lib/prb-math/lib/prb-test/src/
+forge-std/=lib/forge-std/src/
+prb-math/=lib/prb-math/src/
+@prb/=lib/prb-math/src/
