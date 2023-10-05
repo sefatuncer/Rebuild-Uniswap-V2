@@ -1,67 +1,13 @@
-## Foundry
+# Rebuild Uniswap V2
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This repository contains Solidity smart contracts that adhere to specific standards and practices.
 
-Foundry consists of:
+## Features and Standards
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+1. **Solidity Version:** Contracts are written in Solidity 0.8.0 or higher, eliminating the need for SafeMath due to built-in overflow/underflow protection.
 
-## Documentation
+2. **Fixed Point Library:** An existing fixed-point arithmetic library is utilized. Note: The Uniswap fixed-point library is not used in this project. PRBMathUD60x18 fixed-point library is used instead.
 
-https://book.getfoundry.sh/
+3. **Safe Transfers:** Instead of implementing `safeTransfer` from scratch as seen in some protocols (like Uniswap), this repository relies on tried and tested libraries such as OpenZeppelin's or Solmate's `safeTransfer`.
 
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
-# Rebuild-Uniswap-V2
+4. **Flash Swaps:** The implementation of flash swaps is aligned with the EIP 3156 standard. A critical note to developers: **Be exceedingly meticulous about when you update the reserves during this process.**
